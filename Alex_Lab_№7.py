@@ -2,6 +2,29 @@ import csv
 import numpy as np
 import matplotlib.pyplot as plt
 import math
+import random
+import time as t
+
+array1 = [random.randint(0, 1000000) for i in range(1000000)]
+array2 = [random.randint(0, 1000000) for i in range(1000000)]
+# создаем cтандартные списки
+
+t_start1 = t.perf_counter()
+ar1 = np.multiply(array1, array2)
+t.sleep(1)
+all_time1 = t.perf_counter() - t_start1
+
+arrayNp1 = np.array([random.randint(0, 1000000) for i in range(1000000)])
+arrayNp2 = np.array([random.randint(0, 1000000) for i in range(1000000)])
+# создаем массивы NumPy
+
+t_start2 = t.perf_counter()
+ar2 = np.multiply(arrayNp1, arrayNp2)
+t.sleep(1)
+all_time2 = t.perf_counter() - t_start2
+
+print('Время работы cтандартных списков=', all_time1, '\n''Время работы массив NumPy=', all_time2,
+      '\n''Мы убедились что NumPy работет быстрее чем стандартные списки')
 
 allVallues = []  # Все значения
 g = []
@@ -11,7 +34,7 @@ with open('data2.csv', mode='r') as file:
     for lines in csv:
         g.append(lines[3])
 
-for i in g[1:len(g)]:  # Записываем все значения без названия строки
+for i in g[1:]:  # Записываем все значения без названия строки
     allVallues.append(float(i))
 
 
